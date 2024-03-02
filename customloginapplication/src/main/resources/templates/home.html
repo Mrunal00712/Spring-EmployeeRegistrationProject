@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Dashboard</title>
+    
+    <style>
+
+        body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .dashboard {
+        background-color: #f5f5f5;
+        text-align: center;
+        padding: 20px;
+    }
+@keyframes slide {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.dashboard_title {
+    color: #000000; /* Changed to black */
+    animation: slide 1s ease forwards;
+}
+
+<!--    .dashboard_title {-->
+<!--        color: #000000; /* Changed to black */-->
+<!--    }-->
+
+    .dashboard_user {
+        margin-top: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .dashboard_user-name {
+        font-size: 30px;
+        color: #000000;
+    }
+
+    .dashboard_users {
+        margin-top: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #000000; /* Changed to black */
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+
+    </style>
+    
+    
+</head>
+<body>
+
+	<div class="dashboard">
+		<h1 class="dashboard_title">Welcome To the Dashboard</h1>
+		<div class="dashboard_user">
+		  	<h2 th:text="${userdetail.fullname}" class="dashboard_user-name">User's Name</h2>
+		</div>
+		
+		<div class="dashboard_users">
+            <h3>All Registered Users:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Date of Birth</th>
+                        <th>Gender</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user : ${allUsers}">
+                        <td th:text="${user.fullname}"></td>
+                        <td th:text="${user.dateofbirth}"></td>
+                        <td th:text="${user.gender}"></td>
+                        <td th:text="${user.address}"></td>
+                        <td th:text="${user.city}"></td>
+                        <td th:text="${user.state}"></td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+	</div>
+
+    <span sec:authorize="isAuthenticated"><a th:href= "@{/logout}">Logout</a></span>
+</body>
+</html>
