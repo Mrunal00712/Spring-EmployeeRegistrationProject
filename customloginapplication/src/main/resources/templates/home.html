@@ -80,41 +80,41 @@
 </head>
 <body>
 
-	<div class="dashboard">
-		<h1 class="dashboard_title">Welcome To the Dashboard</h1>
-		<div class="dashboard_user">
-		  	<h2 th:text="${userdetail.fullname}" class="dashboard_user-name">User's Name</h2>
-		</div>
-		
-		<div class="dashboard_users">
-            <h3>All Registered Users:</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Full Name</th>
-                        <th>Date of Birth</th>
-                        <th>Gender</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>State</th>
-                
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="user : ${allUsers}">
-                        <td th:text="${user.fullname}"></td>
-                        <td th:text="${user.dateofbirth}"></td>
-                        <td th:text="${user.gender}"></td>
-                        <td th:text="${user.address}"></td>
-                        <td th:text="${user.city}"></td>
-                        <td th:text="${user.state}"></td>
-                        
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-	</div>
+<div class="dashboard">
+    <h1 class="dashboard_title">Welcome To the Dashboard</h1>
+    <div class="dashboard_user">
+        <h2 th:text="${userdetail.fullname}" class="dashboard_user-name">User's Name</h2>
+    </div>
 
-    <span sec:authorize="isAuthenticated"><a th:href= "@{/logout}">Logout</a></span>
+    <div class="dashboard_users">
+        <h3>All Registered Users:</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${allUsers}">
+                <td th:text="${user.fullname}"></td>
+                <td th:text="${user.dateofbirth}"></td>
+                <td th:text="${user.gender}"></td>
+                <td th:text="${user.address}"></td>
+                <td th:text="${user.city}"></td>
+                <td th:text="${user.state}"></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<span sec:authorize="isAuthenticated"><a th:href= "@{/logout}">Logout</a></span>
 </body>
 </html>
